@@ -4,6 +4,9 @@
 #include <NTPClient.h>
 
 byte mac[] = {0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED};
+byte ip[] = {192, 168, 1, 254};
+byte subnet[] = {255, 255, 255, 0};
+byte gateway[] = {192, 168, 1, 1};
 unsigned int localport = 8888;
 
 bool operative = true;
@@ -29,7 +32,7 @@ String ringMinute = "15";
 
 void setup()
 {
-    while (Ethernet.begin(mac) == false)
+    while (Ethernet.begin(mac, ip, subnet, gateway) == false)
     {
         //keep trying to connect
     }
